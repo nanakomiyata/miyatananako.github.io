@@ -1,0 +1,154 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="googleSheets.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <h1 align="center">★　my portfolio ★</h1>
+  </head>
+  <body>
+      <div> <button id="btn">
+      <a href="#" class="btn-square-slant">音声認識開始</a>
+     </button>
+    <div id="content"></div>
+      
+   <div> <button id="mybtn">
+    <a href="#" class="btn-square-pop">BUTTON</a>
+       </button>
+
+    <div id="contents"></div>
+   <ul>
+　<li>宮田奈菜子　1998年　8月28日生まれ　東京都出身</li>
+  <li>小学校　中央立有馬小学校</li>
+  <li>中学校　日本橋中学校</li>
+　<li>高校 東京都立大崎高校</li>
+　<li> 大学　大妻女子大学</li>
+　<li>*音声認識開始ボタンを押して以下の言葉を喋るとリンクに飛びます*</li>
+　<li>大妻</li>
+  </ul>
+
+    
+    <script> var speech = new webkitSpeechRecognition();
+var btn = document.getElementById('btn');
+var content = document.getElementById('content');
+
+//音声認識APIの使用
+var speech = new webkitSpeechRecognition();
+
+//言語を日本語に設定
+speech.lang = "ja";
+btn.addEventListener( 'click' , function() {
+speech.start();
+    
+} );
+
+speech.addEventListener( 'result' , function( e ) {
+ console.log( e );
+ var text = e.results[0][0].transcript
+content.textContent = text;
+    if( text === "大妻" ) getSearch();
+
+} );
+function getVideo() {
+     var URL = '<iframe width="560" height="315" src="https://www.youtube.com/embed/H6z-JObVuW4?list=PLBw8EmMNM8vzaYIZiNm4FEjQUHLR0zfqF" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+       content.innerHTML = URL;
+    
+}
+function getSearch() {
+    var iframe = document.createElement('iframe');
+    
+    iframe.width = '2000px';
+    iframe.height = '2000px';
+    iframe.src = 'http://www.otsuma.ac.jp/';
+    content.appendChild(iframe);
+}
+
+    
+    /* global $ loadSheets */
+    
+    $(function(){
+      $("#mybtn").on("click",showdata1);
+      async function showdata1 () {
+        let data = await loadSheets('s1317153!A1:E100');
+        console.log(data.values[0][0]);
+        $("#contents").append(data.values[1][1]);
+        $("#contents").append("<img height='100px' src='"+data.values[1][2]+"'/>");
+        $("#contents").append(data.values[1][3]);
+        $("#contents").append("<br>");
+        
+     }
+    });
+        $(function(){
+      $("#mybtn").on("click",showdata);
+      async function showdata () {
+        let data = await loadSheets('s1317153!A1:E100');
+        console.log(data.values[0][0]);
+        $("#contents").append(data.values[2][1]);
+        $("#contents").append("<img height='100px' src='"+data.values[2][2]+"'/>");
+        $("#contents").append(data.values[2][3]);
+        $("#contents").append("<br>");
+     }
+    });
+    
+         $(function(){
+      $("#mybtn").on("click",showdata);
+      async function showdata () {
+        let data = await loadSheets('s1317153!A1:E100');
+        console.log(data.values[0][0]);
+        $("#contents").append(data.values[3][1]);
+        $("#contents").append("<img height='100px' src='"+data.values[3][2]+"'/>");
+        $("#contents").append(data.values[3][3]);
+        $("#contents").append("<br>");
+          
+     }
+    });
+         $(function(){
+      $("#mybtn").on("click",showdata);
+      
+      async function showdata () {
+        let data = await loadSheets('s1317153!A1:E100');
+        console.log(data.values[0][0]);
+        $("#contents").append(data.values[4][1]);
+        $("#contents").append("<img height='100px' src='"+data.values[4][2]+"'/>");
+        $("#contents").append(data.values[4][3]);
+        $("#contents").append("<br>");
+          
+    }
+    });
+          
+         $(function(){
+      $("#mybtn").on("click",showdata);
+      
+      async function showdata () {
+        let data = await loadSheets('s1317153!A1:E100');
+        console.log(data.values[0][0]);
+        $("#contents").append(data.values[6][1]);
+        $("#contents").append("<img height='100px' src='"+data.values[6][2]+"'/>");
+        $("#contents").append(data.values[6][3]);
+        $("#contents").append("<br>");
+          
+     }
+    });
+         $(function(){
+      $("#mybtn").on("click",showdata1);
+      
+      async function showdata1 () {
+        let data = await loadSheets('s1317153!A1:E100');
+        console.log(data.values[0][0]);
+        $("#contents").append(data.values[7][1]);
+        $("#contents").append("<img height='100px' src='"+data.values[7][2]+"'/>");
+        $("#contents").append(data.values[7][3]);
+        $("#contents").append("<br>");
+        
+        
+        
+      } 
+    });
+
+    </script>
+    <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+  </body>
+</html>
